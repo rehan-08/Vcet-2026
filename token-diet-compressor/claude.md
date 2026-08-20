@@ -1,1 +1,0 @@
-Behavior : Use caveman mode. No filler, fragment sentences only, tool-first.
