@@ -1,0 +1,183 @@
+:root {
+  --bg: #f6f1ea;
+  --ink: #241f30;
+  --ink-dim: #6a6178;
+  --ink-faint: #a49bb0;
+
+  /* cohesive warm/cool triad + a gold fourth — chosen to sit together,
+     not compete: violet is the brand/primary, coral is energy, sage is
+     "growth/savings", gold is value. one hue family per role. */
+  --violet: #6a4fc4;
+  --violet-soft: rgba(106, 79, 196, 0.13);
+  --violet-line: rgba(106, 79, 196, 0.32);
+
+  --coral: #e2643f;
+  --coral-soft: rgba(226, 100, 63, 0.13);
+  --coral-line: rgba(226, 100, 63, 0.32);
+
+  --sage: #3f8f77;
+  --sage-soft: rgba(63, 143, 119, 0.13);
+  --sage-line: rgba(63, 143, 119, 0.32);
+
+  --gold: #b9861f;
+  --gold-soft: rgba(185, 134, 31, 0.15);
+  --gold-line: rgba(185, 134, 31, 0.36);
+
+  --danger: #c73e5c;
+  --danger-soft: rgba(199, 62, 92, 0.13);
+  --danger-line: rgba(199, 62, 92, 0.32);
+
+  --surface: rgba(255, 255, 255, 0.68);
+  --surface-solid: #fffdfa;
+  --surface-soft: rgba(255, 255, 255, 0.42);
+  --border: rgba(36, 31, 48, 0.08);
+  --border-strong: rgba(106, 79, 196, 0.28);
+
+  --shadow-sm: 0 2px 10px rgba(40, 24, 70, 0.06);
+  --shadow-md: 0 14px 34px rgba(40, 24, 70, 0.12), 0 2px 8px rgba(40, 24, 70, 0.06);
+  --shadow-lift: 0 20px 48px rgba(40, 24, 70, 0.18), 0 4px 14px rgba(40, 24, 70, 0.08);
+
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
+
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-body: "Plus Jakarta Sans", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+
+  font: 15px/1.55 var(--font-body);
+  color-scheme: light;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  min-height: 100svh;
+  position: relative;
+}
+
+/* Aurora background: slow-drifting blurred color fields behind the glass UI */
+.aurora {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.aurora::before,
+.aurora::after,
+.aurora span {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.55;
+  will-change: transform;
+}
+
+.aurora::before {
+  width: 620px;
+  height: 620px;
+  top: -180px;
+  left: -120px;
+  background: var(--violet);
+  animation: drift-a 26s ease-in-out infinite alternate;
+}
+
+.aurora::after {
+  width: 560px;
+  height: 560px;
+  bottom: -220px;
+  right: -140px;
+  background: var(--coral);
+  animation: drift-b 32s ease-in-out infinite alternate;
+}
+
+.aurora span {
+  width: 480px;
+  height: 480px;
+  top: 30%;
+  left: 55%;
+  background: var(--sage);
+  opacity: 0.4;
+  animation: drift-c 22s ease-in-out infinite alternate;
+}
+
+@keyframes drift-a {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(80px, 60px) scale(1.12); }
+}
+
+@keyframes drift-b {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(-70px, -50px) scale(1.08); }
+}
+
+@keyframes drift-c {
+  from { transform: translate(-40px, 20px) scale(0.95); }
+  to { transform: translate(50px, -40px) scale(1.1); }
+}
+
+/* Subtle grain for tactile, non-flat texture over the aurora */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.045;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+#root {
+  position: relative;
+  z-index: 2;
+  min-height: 100svh;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input[type="text"] {
+  font-family: inherit;
+}
+
+::selection {
+  background: var(--violet-soft);
+  color: var(--ink);
+}
+
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 999px;
+  border: 3px solid var(--bg);
+}
