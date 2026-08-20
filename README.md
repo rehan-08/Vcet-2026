@@ -43,11 +43,12 @@ Each project is self-contained with its own dependencies and setup steps — see
 
 ## Team
 
-| Name | Role | GitHub |
-|------|------|--------|
-| [Your Name] | [Role] | [@handle](https://github.com/) |
-| [Your Name] | [Role] | [@handle](https://github.com/) |
-| [Your Name] | [Role] | [@handle](https://github.com/) |
+| Name | GitHub |
+|------|--------|
+| Rehan Mhate    | https://github.com/rehan-08 |
+| Hunain Shaikh  | https://github.com/Itshunain26 |
+| Subhaan Parkar | https://github.com/SubhaanP25 |
+| Saqlain Parkar | https://github.com/SNOOPK10 |
 
 ## License
 
